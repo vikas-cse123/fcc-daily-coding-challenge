@@ -1,12 +1,11 @@
-//question : #299
+//question : #300
 const isArrayOfString = (arr) => {
-  console.log({ arr });
   for (const element of arr) {
     if (typeof element !== "string") return false;
   }
   return true;
 };
-const isValidSchema = (obj) => {
+const isValidObjectSchema = (obj) => {
   const roles = ["user", "creator", "moderator", "staff", "admin"];
   const { username, posts, verified, role, supporter, badges } = obj;
   return (
@@ -18,4 +17,13 @@ const isValidSchema = (obj) => {
     Array.isArray(badges) &&
     isArrayOfString(badges)
   );
+};
+
+const isValidSchema = (inp) => {
+  const { users } = inp;
+  if (!Array.isArray(users)) return false;
+  for (const user of users) {
+    if (!isValidObjectSchema(user)) return false;
+  }
+  return true;
 };
