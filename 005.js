@@ -1,6 +1,5 @@
 //question : #299
 const isArrayOfString = (arr) => {
-  console.log({ arr });
   for (const element of arr) {
     if (typeof element !== "string") return false;
   }
